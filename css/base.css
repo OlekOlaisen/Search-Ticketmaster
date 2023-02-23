@@ -1,0 +1,37 @@
+/* style.css */
+#results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.result-item {
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30rem;
+}
+
+.result-image {
+  padding: 1rem;
+}
+
+.result-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.result-details {
+  padding: 1rem;
+}
+
+.result-details h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.result-details p {
+  margin-top: 0;
+  margin-bottom: 0
+}
