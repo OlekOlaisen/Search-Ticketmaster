@@ -1,16 +1,21 @@
+/* Set default font size */
 html {
 	font-size: 20px;
 }
 
-body {
-	height: 100%;
-	width: 100%;
+/* Set a minimum font size for small screens */
+@media only screen and (max-width: 500px) {
+	html {
+		font-size: 16px;
+	}
 }
 
+/* Make the header responsive */
 .header {
 	height: 4rem;
 	width: 100%;
-	
+	-webkit-box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.33); 
+	box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.33);
 }
 
 .header-title {
@@ -21,6 +26,7 @@ body {
 	font-size: 2rem;
 }
 
+/* Make the container responsive */
 .container {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -30,27 +36,46 @@ body {
 	margin: 1rem;
 }
 
+/* Make the left column responsive */
 .left {
 	grid-area: 1 / 1 / 6 / 2;
-	
 }
 
-
+/* Make the right column responsive */
 .right {
 	grid-area: 1 / 2 / 6 / 6;
 }
 
-@media screen and (max-width:768px) {
-	
+/* Adjust the grid for small screens */
+@media only screen and (max-width: 768px) {
 	.container {
-		display: flex;
-		flex-flow: column;
+		grid-template-columns: repeat(2, 1fr);
+		margin: 0.5rem;
 	}
 
-	.search-form {
-		display: block;
-		height: 200px;
-		background-color: white;
-		position: absolute;
+	.left {
+		grid-area: 1 / 1 / 4 / 3;
+		height: 250px;
+	}
+
+	.right {
+		grid-area: 4 / 1 / 7 / 3;
+	}
+}
+
+/* Adjust the grid for very small screens */
+@media only screen and (max-width: 500px) {
+	.container {
+		grid-template-columns: 1fr;
+		margin: 0.25rem;
+	}
+
+	.left {
+		grid-area: 1 / 1 / 7 / 2;
+		height: 400px;
+	}
+
+	.right {
+		grid-area: 8 / 1 / 13 / 2;
 	}
 }
