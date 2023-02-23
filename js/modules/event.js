@@ -10,7 +10,7 @@ fetch(url)
   .then(event => {
     const name = event.name;
     const date = event.dates.start.localDate;
-    const time = event.dates.start.localTime;
+    const timeStart = event.dates.start.localTime;
     const venue = event._embedded.venues[0].name;
     const imageUrl = event.images.find(image => image.width > 500)?.url;
     const ticketUrl = event.url;
@@ -18,17 +18,20 @@ fetch(url)
     const category = event.classifications[0].segment.name;
 
     eventDetailsContainer.innerHTML = `
-      <div class="event-image">
-        <img src="${imageUrl}" alt="${name}">
+      <div class="event-image__container">
+        <img class="event-image" src="${imageUrl}" alt="${name}">
       </div>
-      <div class="event-details">
-        <h2>${name}</h2>
-        <p>Date: ${date}</p>
-        <p>Time: ${time}</p>
-        <p>Venue: ${venue}</p>
-        <p>${availableTickets}</p>
-        <p>Category: ${category}</p>
-        <a href="${ticketUrl}" target="_blank">Buy Tickets</a>
+      <div class="event__container"> 
+        <div class="event-details__container">
+          <h2 class="event-details__name">${name}</h2>
+          <p class="event-details__date">Date: ${date}</p>
+          <p class="event-details__time">Time: ${timeStart}</p>
+          <p class="event-details__venue">Venue: ${venue}</p>
+          <p class="event-details__tickets">${availableTickets}</p>
+          <p class="event-details__category">Category: ${category}</p>
+          <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
+        </div>
+        <div class="event__map"></div>
       </div>
     `;
   })
@@ -37,3 +40,4 @@ fetch(url)
 }
 
 Event();
+
