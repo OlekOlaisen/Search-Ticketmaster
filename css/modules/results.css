@@ -42,6 +42,10 @@
     flex-grow: 1;
 }
 
+.result-details__id {
+	text-decoration: none;
+}
+
 .result-details__name {
     margin: 0;
     font-size: 1.24rem;
