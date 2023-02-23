@@ -1,52 +1,51 @@
-// app.js
+
 const searchForm = document.getElementById('search-form');
 const resultsContainer = document.getElementById('results-container');
 
 searchForm.addEventListener('submit', event => {
-  event.preventDefault();
-  const cityInput = document.getElementById('city-input');
-  const city = cityInput.value;
-  const categorySelect = document.getElementById('category-select');
-  const category = categorySelect.value;
-  const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      resultsContainer.innerHTML = '';
-
-      let events = data._embedded.events;
-      if (category) {
-        events = events.filter(event => event.classifications[0].segment.name.toLowerCase() === category);
-      }
-      events.sort((a, b) => a.classifications[0].segment.name.localeCompare(b.classifications[0].segment.name));
-      events.forEach(event => {
-        const name = event.name;
-        const date = event.dates.start.localDate;
-        const venue = event._embedded.venues[0].name;
-        const imageUrl = event.images.find(image => image.width > 500)?.url;
-        const ticketUrl = event.url;
-        const availableTickets = event.dates.status.code === 'onsale' ? 'Available now!' : 'Tickets not yet on sale';
-        const category = event.classifications[0].segment.name;
-
-        const resultItem = document.createElement('div');
-        resultItem.classList.add('result-item');
-        resultItem.innerHTML = `
-          <div class="result-image">
-            <img src="${imageUrl}" alt="${name}">
-          </div>
-          <div class="result-details">
-            <h2>${name}</h2>
-            <p>Date: ${date}</p>
-            <p>Venue: ${venue}</p>
-            <p>${availableTickets}</p>
-            <p>Category: ${category}</p>
-            <a href="${ticketUrl}" target="_blank">Buy Tickets</a>
-          </div>
-        `; 
-
-        resultsContainer.appendChild(resultItem);
-      });
-    })
-    .catch(error => console.error(error));
+	event.preventDefault();
+	const cityInput = document.getElementById('city-input');
+	const city = cityInput.value;
+	const categorySelect = document.getElementById('category-select');
+	const category = categorySelect.value;
+	const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H`;
+	
+	fetch(url)
+	.then(response => response.json())
+	.then(data => {	
+		resultsContainer.innerHTML = '';
+		let events = data._embedded.events;
+		if (category) {
+			events = events.filter(event => event.classifications[0].segment.name.toLowerCase() === category);
+		}
+		events.sort((a, b) => a.classifications[0].segment.name.localeCompare(b.classifications[0].segment.name));
+		events.forEach(event => {
+			const name = event.name;
+			const date = event.dates.start.localDate;
+			const venue = event._embedded.venues[0].name;
+			const imageUrl = event.images.find(image => image.width > 500)?.url;
+			const ticketUrl = event.url;
+			const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
+			const category = event.classifications[0].segment.name;
+			
+			const resultItem = document.createElement('div');
+			resultItem.classList.add('result-item');
+			resultItem.innerHTML = `
+				<div class="result-image">
+					<img src="${imageUrl}" alt="${name}">
+				</div>
+				<div class="result-details">
+					<h2>${name}</h2>
+					<p>When: ${date}</p>
+					<p>Venue: ${venue}</p>
+					<p>${availableTickets}</p>
+					<p>Category: ${category}</p>
+					<a href="${ticketUrl}" target="_blank">Buy Tickets</a>
+				</div>
+			`; 
+			
+			resultsContainer.appendChild(resultItem);
+		});
+	})
+	.catch(error => console.error(error));
 });

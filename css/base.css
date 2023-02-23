@@ -1,37 +1,56 @@
-/* style.css */
-#results-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+html {
+	font-size: 20px;
 }
 
-.result-item {
-  margin: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  width: 30rem;
+body {
+	height: 100%;
+	width: 100%;
 }
 
-.result-image {
-  padding: 1rem;
+.header {
+	height: 4rem;
+	width: 100%;
+	
 }
 
-.result-image img {
-  max-width: 100%;
-  height: auto;
+.header-title {
+	color: #026cdf;
+	text-align: center;
+	padding: 1rem;
+	font-family: 'Hind Madurai', sans-serif;
+	font-size: 2rem;
 }
 
-.result-details {
-  padding: 1rem;
+.container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	margin: 1rem;
 }
 
-.result-details h2 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+.left {
+	grid-area: 1 / 1 / 6 / 2;
+	
 }
 
-.result-details p {
-  margin-top: 0;
-  margin-bottom: 0
+
+.right {
+	grid-area: 1 / 2 / 6 / 6;
+}
+
+@media screen and (max-width:768px) {
+	
+	.container {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.search-form {
+		display: block;
+		height: 200px;
+		background-color: white;
+		position: absolute;
+	}
 }

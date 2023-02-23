@@ -1,1 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Hind+Vadodara:wght@700&family=Telex&display=swap');
+
+@import './reset.css';
+@import './variables.css';
 @import './base.css';
+@import './modules/search-form.css';
+@import './modules/results.css';

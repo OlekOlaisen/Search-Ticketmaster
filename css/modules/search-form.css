@@ -1,0 +1,9 @@
+.search-form {
+	position: fixed;
+	display: flex;
+	flex-flow: column;
+	width: 10%;
+	height: 100vh;
+	
+}
+
