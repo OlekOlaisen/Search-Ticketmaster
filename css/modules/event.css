@@ -99,7 +99,7 @@
 @media only screen and (max-width: 1200px) {
 	.event__container {
 		width: 100vw;
-		top: 35%;
+		top: 30%;
 		height: 542px;
 		position: absolute;
 		background-color: #fff;
@@ -116,7 +116,7 @@
 	.event__image-container {
 		display: none;
 	}
-
+	
 	.event-details__name {
 		margin-top: 4rem;
 	}
@@ -132,7 +132,7 @@
 	.event__container {
 		width: 100vw;
 		position: absolute;
-		top: 35%;
+		top: 30%;
 		background-color: #fff;
 		display: flex;
 		flex-flow: column;
@@ -146,7 +146,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-	justify-content: center;
+		justify-content: center;
 	}
 	
 	
