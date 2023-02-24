@@ -59,3 +59,14 @@
 .search-form__button:hover {
   background-color: #014791;
 }
+
+
+
+@media only screen and (max-width: 768px) {
+
+}
+
+
+@media only screen and (max-width: 500px) {
+	
+}

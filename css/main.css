@@ -3,6 +3,7 @@
 @import './reset.css';
 @import './variables.css';
 @import './base.css';
-@import './modules/search-form.css';
+@import './modules/header.css';
+@import './modules/search.css';
 @import './modules/results.css';
 @import './modules/event.css';

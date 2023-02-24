@@ -1,32 +1,35 @@
 .event-image {
-	width: 100vw;
+	width: 110%;
 	opacity: 0.7;
 	filter: blur(4px);
 	position: fixed;
+	top: -10px;
+	left: -10px;
 }
 
 .event__container {
 	width: 100vw;
 	position: fixed;
-	top: 20rem;
-	height: 100%;
+	top: 25%;
+	height: 500px;
 	background-color: #fff;
 	display: flex;
-	flex-flow: row;
+	flex-flow: row wrap;
+	gap: 1rem;
 }
 
 .event-details__container {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	margin: 3rem 1rem 1rem 1rem;
+	justify-content: center;
 	gap: 1rem;
 	text-align: center;
+	width: 50%;
 }
 
 .event-details__name {
 	font-family: 'Athiti', sans-serif;
-	
 }
 
 .event-details__date {
@@ -49,48 +52,103 @@
 	font-family: 'Raleway', sans-serif;
 }
 
+.event-details__performer {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-top: 2rem;
+}
+
+.event-performer-image__container {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.event-image__container {
+	display: flex;
+	flex-flow: row;
+	align-items: end;
+	justify-content: center;
+}
+
+.event-details__performer-image {
+	width: 500px;
+}
+
 .event-details__button {
-    padding: 5px 10px;
-    background-color: #026cdf;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
-    text-align: center;
-	 font-family: 'Raleway', sans-serif;
+	padding: 5px 10px;
+	background-color: #026cdf;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 0.2s ease-in-out;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	margin-top: 2rem;
 }
 
 .event-details__button:hover {
-    background-color: #014791;
+	background-color: #014791;
 }
 
 
-/* Adjust the grid for small screens */
-@media only screen and (max-width: 768px) {
-	
+@media only screen and (max-width: 1200px) {
 	.event__container {
-	width: 100vw;
-	position: absolute;
-	top: 15rem;
-	height: 100%;
-	background-color: #fff;
-	display: flex;
-	flex-flow: column;
-}
+		width: 100vw;
+		top: 35%;
+		height: 542px;
+		position: absolute;
+		background-color: #fff;
+		display: flex;
+		flex-flow: column;
+	}
+	
+	.event-details__container {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.event__image-container {
+		display: none;
+	}
+
+	.event-details__name {
+		margin-top: 4rem;
+	}
+	
+	.event-details__performer-image {
+		display: none;
+	}
+	
 }
 
 /* Adjust the grid for very small screens */
 @media only screen and (max-width: 500px) {
-	
 	.event__container {
-	width: 100vw;
-	position: absolute;
-	top: 15rem;
-	height: 100%;
-	background-color: #fff;
-	display: flex;
-	flex-flow: column;
-}
+		width: 100vw;
+		position: absolute;
+		top: 35%;
+		background-color: #fff;
+		display: flex;
+		flex-flow: column;
+	}
+	
+	.event__image-container {
+		display: none;
+	}
+	
+	.event-details__container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+	justify-content: center;
+	}
+	
+	
+	
 }
