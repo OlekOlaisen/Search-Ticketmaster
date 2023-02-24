@@ -5,6 +5,7 @@
 	position: fixed;
 	top: -10px;
 	left: -10px;
+	z-index: -1;
 }
 
 .event__container {
@@ -29,31 +30,35 @@
 }
 
 .event-details__name {
-	font-family: 'Athiti', sans-serif;
+	font-family: var(--heading-font);
+}
+
+.event-details__performers {
+	font-family: var(--heading-font);
 }
 
 .event-details__date {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 }
 
 .event-details__time {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 }
 
 .event-details__venue {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 }
 
 .event-details__tickets {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 }
 
 .event-details__category {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 }
 
 .event-details__performer {
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin-top: 2rem;
@@ -79,7 +84,7 @@
 
 .event-details__button {
 	padding: 5px 10px;
-	background-color: #026cdf;
+	background-color: var(--button-color);
 	border-radius: 5px;
 	color: #fff;
 	font-size: 1.5rem;
@@ -87,14 +92,30 @@
 	text-decoration: none;
 	transition: background-color 0.2s ease-in-out;
 	text-align: center;
-	font-family: 'Raleway', sans-serif;
+	font-family: var(--heading-font);
 	margin-top: 2rem;
 }
 
 .event-details__button:hover {
-	background-color: #014791;
+	background-color: var(--button-color-hover);
 }
 
+.event-back {
+	font-size: 2rem;
+	top: 1rem;
+	left: 1rem;
+	padding: 0.5rem 1rem;
+	color: white;
+	z-index: 3;
+	background-color: black;
+	border-radius: 10px;
+	position: absolute;
+	transition: all 200ms ease-in-out;
+}
+
+.event-back:hover {
+	box-shadow: 0px 2px 5px rgb(0, 0, 0);
+}
 
 @media only screen and (max-width: 1200px) {
 	.event__container {

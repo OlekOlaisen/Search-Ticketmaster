@@ -1,3 +1,4 @@
+
 :root {
 	--primary-color: #007bff;
 	--secondary-color: #6c757d; 
@@ -5,16 +6,10 @@
 	--button-color-hover:#026cdf; 
 	
 	
-	--main-font: 'Prata', serif;
+	--main-font: 'Times new roman', serif;
 	--heading-font: 'Athiti', sans-serif;
 	--font-size-base: 20px;
 	--font-size-small: 14px;
 	--font-size-large: 20px;
-	
-	
-	--breakpoint-sm: 576px;
-	--breakpoint-md: 768px;
-	--breakpoint-lg: 992px;
-	--breakpoint-xl: 1200px;
 	
 }

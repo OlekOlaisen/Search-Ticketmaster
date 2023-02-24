@@ -13,9 +13,10 @@ export default function Search() {
     const categorySelect = document.querySelector('#category-select');
     const resultsContainer = document.querySelector('#results-container');
     
+    const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
     const city = cityInput.value;
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}`;
     
     fetch(url)
     .then((response) => response.json())
