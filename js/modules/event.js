@@ -16,12 +16,12 @@ export default function Event() {
       const ticketUrl = event.url;
       const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
       const category = event.classifications[0].segment.name;
-      const performers = event._embedded.attractions.map(attraction => attraction.name).join(", ");
-      const performerImages = event._embedded.attractions.map(attraction => {
+      const performers = event._embedded.attractions ? event._embedded.attractions.map(attraction => attraction.name).join(", ") : '';
+      const performerImages = event._embedded.attractions ? event._embedded.attractions.map(attraction => {
         if (attraction.images.length > 0) {
           return attraction.images.find(image => image.width > 500)?.url;
         }
-      });
+      }) : [];
       const performerImage = performerImages.filter(image => image != null)[0];
 
       eventDetailsContainer.innerHTML = `
@@ -40,7 +40,7 @@ export default function Event() {
             <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
           </div>
           <div class="event-performer-image__container">
-          <img class="event-details__performer-image" src="${performerImage}" alt="Performer image">
+            <img class="event-details__performer-image" src="${performerImage}" alt="No performer image">
           </div>
         </div>
       `;
