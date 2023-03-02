@@ -9,7 +9,9 @@ export default function Event() {
     .then(response => response.json())
     .then(event => {
       const name = event.name;
-      const date = event.dates.start.localDate;
+      const dateStr = event.dates.start.localDate;
+      const dateArr = dateStr.split('-');
+      const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
       const timeStart = event.dates.start.localTime;
       const venue = event._embedded.venues[0].name;
       const imageUrl = event.images.find(image => image.width > 500)?.url;

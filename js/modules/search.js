@@ -16,6 +16,7 @@ export default function Search() {
     const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
     const category = event.classifications[0].segment.name;
 
+    // Renders events in HTML
     const resultItem = document.createElement('div');
     resultItem.classList.add('result-item');
     resultItem.innerHTML = `
@@ -37,7 +38,7 @@ export default function Search() {
     return resultItem;
   };
 
-  // Load events from localStorage
+  // Loads events from localStorage
   const savedEvents = localStorage.getItem('events');
   let events = [];
 
@@ -70,7 +71,7 @@ export default function Search() {
 
         events.sort((a, b) => a.classifications[0].segment.name.localeCompare(b.classifications[0].segment.name));
 
-        // Save events to localStorage
+        // Saves events to localStorage
         localStorage.setItem('events', JSON.stringify(events));
 
         events.forEach((event) => {
