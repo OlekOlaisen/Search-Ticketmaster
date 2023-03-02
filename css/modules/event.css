@@ -29,37 +29,27 @@
 	width: 50%;
 }
 
-.event-details__name {
-	font-family: var(--heading-font);
-}
 
-.event-details__performers {
-	font-family: var(--heading-font);
-}
-
-.event-details__date {
-	font-family: var(--heading-font);
-}
-
-.event-details__time {
-	font-family: var(--heading-font);
-}
-
-.event-details__venue {
-	font-family: var(--heading-font);
-}
-
-.event-details__tickets {
-	font-family: var(--heading-font);
-}
-
+.event-details__performers,
+.event-details__date,
+.event-details__time,
+.event-details__venue,
+.event-details__tickets,
 .event-details__category {
+	font-family: var(--base-font);
+	font-size: var(--font-size-base);
+	color: var(--secondary-color);
+}
+
+.event-details__name{
+	color: #000;
+	font-size: var(--font-size-large);
 	font-family: var(--heading-font);
 }
 
 .event-details__performer {
 	font-family: var(--heading-font);
-	font-size: 1.5rem;
+	font-size: var(--font-size-base);
 	font-weight: 600;
 	margin-top: 2rem;
 }
@@ -82,16 +72,24 @@
 	width: 500px;
 }
 
+.event-details--bold {
+	color: rgb(56, 56, 56);
+}
+
+.event-details--bold-tickets {
+	color: rgb(56, 56, 56);
+	
+}
+
 .event-details__button {
 	padding: 5px 10px;
 	background-color: var(--button-color);
 	border-radius: 5px;
 	color: #fff;
-	font-size: 1.5rem;
+	font-size: var(--font-size-base);
 	font-weight: 600;
 	text-decoration: none;
 	transition: background-color 0.2s ease-in-out;
-	text-align: center;
 	font-family: var(--heading-font);
 	margin-top: 2rem;
 }
@@ -101,7 +99,7 @@
 }
 
 .event-back {
-	font-size: 2rem;
+	font-size: 1rem;
 	top: 1rem;
 	left: 1rem;
 	padding: 0.5rem 1rem;

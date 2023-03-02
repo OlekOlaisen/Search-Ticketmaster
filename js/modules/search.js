@@ -24,12 +24,12 @@ export default function Search() {
         <div class="result-image">
           <img src="${imageUrl}" alt="${name}">
         </div>
+        <h2 class="result-details__name">${name}</h2>
         <div class="result-details">
-          <h2 class="result-details__name">${name}</h2>
-          <p class="result-details__date">When: ${date}</p>
-          <p class="result-details__venue">Venue: ${venue}</p>
-          <p class="result-details__tickets">${availableTickets}</p>
-          <p class="result-details__category">Category: ${category}</p>
+          <p class="result-details__date"><b class="event-details--bold">When:</b> ${date}</p>
+          <p class="result-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
+          <p class="result-details__category"><b class="event-details--bold">Category:</b> ${category}</p>
+          <p class="result-details__tickets"><b class="event-details--bold-tickets">${availableTickets}</b></p>
           <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
         </div>
       </a>
@@ -57,7 +57,7 @@ export default function Search() {
 
     const city = cityInput.value;
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}&size=100`;
 
     fetch(url)
       .then((response) => response.json())

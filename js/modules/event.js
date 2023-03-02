@@ -12,7 +12,7 @@ export default function Event() {
       const dateStr = event.dates.start.localDate;
       const dateArr = dateStr.split('-');
       const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
-      const timeStart = event.dates.start.localTime;
+      const timeStart = event.dates.start.localTime?.slice(0, 5);
       const venue = event._embedded.venues[0].name;
       const imageUrl = event.images.find(image => image.width > 500)?.url;
       const ticketUrl = event.url;
@@ -32,13 +32,13 @@ export default function Event() {
         </div>
         <div class="event__container"> 
           <div class="event-details__container">
-            <h2 class="event-details__name">${name}</h2>
-            <p class="event-details__performers">Performers: ${performers}</p>
-            <p class="event-details__category">Category: ${category}</p>
-            <p class="event-details__date">Date: ${date}</p>
-            <p class="event-details__time">Time: ${timeStart}</p>
-            <p class="event-details__venue">Venue: ${venue}</p>
-            <p class="event-details__tickets">${availableTickets}</p>
+            <h2 class="event-details__name"><b class="event-details--bold">${name}</b></h2>
+            <p class="event-details__performers"><b class="event-details--bold">Performers:</b> ${performers}</p>
+            <p class="event-details__category"><b class="event-details--bold">Category:</b> ${category}</p>
+            <p class="event-details__date"><b class="event-details--bold">Date:</b> ${date}</p>
+            <p class="event-details__time"><b class="event-details--bold">Time:</b> ${timeStart}</p>
+            <p class="event-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
+            <p class="event-details__tickets"><b class="event-details--bold">${availableTickets}</b></p>
             <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
           </div>
           <div class="event-performer-image__container">
