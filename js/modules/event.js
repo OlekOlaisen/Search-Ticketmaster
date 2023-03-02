@@ -16,8 +16,6 @@ export default function Event() {
       const ticketUrl = event.url;
       const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
       const category = event.classifications[0].segment.name;
-
-      // Get artist/performer information
       const performers = event._embedded.attractions.map(attraction => attraction.name).join(", ");
       const performerImages = event._embedded.attractions.map(attraction => {
         if (attraction.images.length > 0) {
@@ -26,7 +24,6 @@ export default function Event() {
       });
       const performerImage = performerImages.filter(image => image != null)[0];
 
-      // Update HTML with artist/performer information
       eventDetailsContainer.innerHTML = `
         <div class="event-image__container">
           <img class="event-image" src="${imageUrl}" alt="${name}">
