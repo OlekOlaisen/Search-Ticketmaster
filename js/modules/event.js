@@ -5,11 +5,10 @@ export default function Event() {
   const eventId = urlParams.get('id');
   const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
   const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}&include=venue`;
-
-
-
+  
   const eventDetailsContainer = document.querySelector('#event-details-container');
-
+  const cleanUrl = window.location.href.replace('event.html', '');
+  history.replaceState(null, '', cleanUrl);
 
 
   // Fetches the event data 
@@ -37,7 +36,8 @@ export default function Event() {
         }
       }) : [];
       const performerImage = performerImages.filter(image => image != null)[0];
-
+      document.title = name;
+      
       // Renders HTML
       eventDetailsContainer.innerHTML = `
         <div class="event-image__container">
