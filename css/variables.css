@@ -6,10 +6,10 @@
 	--button-color-hover:#026cdf; 
 	
 	
-	--heading-font: 'Oswald', sans-serif;
-	--base-font: 'Overpass', sans-serif;
+	--font-heading: 'Oswald', sans-serif;
+	--font-base: 'Overpass', sans-serif;
+	--font-size-large: 32px;
 	--font-size-base: 20px;
 	--font-size-small: 14px;
-	--font-size-large: 32px;
 	
 }

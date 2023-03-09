@@ -14,11 +14,11 @@ html {
 }
 
 
-.left {
+.container__search {
 	grid-area: 1 / 1 / 6 / 2;
 }
 
-.right {
+.container__results {
 	grid-area: 1 / 2 / 6 / 6;
 }
 
@@ -29,12 +29,12 @@ html {
 		margin: 0.5rem;
 	}
 	
-	.left {
+	.container__search {
 		grid-area: 1 / 1 / 4 / 3;
 		height: 300px;
 	}
 	
-	.right {
+	.container__results {
 		grid-area: 4 / 1 / 7 / 3;
 	}
 }
@@ -46,12 +46,12 @@ html {
 		margin: 0.25rem;
 	}
 	
-	.left {
+	.container__search {
 		grid-area: 1 / 1 / 7 / 2;
 		height: 300px;
 	}
 	
-	.right {
+	.container__results {
 		grid-area: 8 / 1 / 13 / 2;
 	}
 }

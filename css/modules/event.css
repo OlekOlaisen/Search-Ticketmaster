@@ -36,7 +36,7 @@
 .event-details__venue,
 .event-details__tickets,
 .event-details__category {
-	font-family: var(--base-font);
+	font-family: var(--font-base);
 	font-size: var(--font-size-base);
 	color: var(--secondary-color);
 }
@@ -44,11 +44,11 @@
 .event-details__name{
 	color: #000;
 	font-size: var(--font-size-large);
-	font-family: var(--heading-font);
+	font-family: var(--font-heading);
 }
 
 .event-details__performer {
-	font-family: var(--heading-font);
+	font-family: var(--font-heading);
 	font-size: var(--font-size-base);
 	font-weight: 600;
 	margin-top: 2rem;
@@ -90,7 +90,7 @@
 	font-weight: 600;
 	text-decoration: none;
 	transition: background-color 0.2s ease-in-out;
-	font-family: var(--heading-font);
+	font-family: var(--font-heading);
 	margin-top: 2rem;
 }
 
