@@ -20,6 +20,11 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.event-details--bold {
+
+    color: black;
+}
+
 .green-text {
     color: green;
 }
@@ -27,6 +32,8 @@
 .red-text {
     color: red;
 }
+
+
 
 .result-item__image {
     width: 100%;
