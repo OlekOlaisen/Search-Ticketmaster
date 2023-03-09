@@ -14,26 +14,26 @@ export default function Search() {
     const imageUrl = event.images.find((image) => image.width > 500)?.url;
     const ticketUrl = event.url;
     const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
-    const category = event.classifications[0].segment.name;
+    const category = event.classifications?.[0]?.segment.name || '';
 
     // Renders events in HTML
     const resultItem = document.createElement('div');
     resultItem.classList.add('result-item');
     resultItem.innerHTML = `
-      <a class="result-details__id" href="event.html?id=${event.id}">
-        <div class="result-image">
-          <img src="${imageUrl}" alt="${name}">
-        </div>
-        <h2 class="result-details__name">${name}</h2>
-        <div class="result-details">
-          <p class="result-details__date"><b class="event-details--bold">When:</b> ${date}</p>
-          <p class="result-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
-          <p class="result-details__category"><b class="event-details--bold">Category:</b> ${category}</p>
-          <p class="result-details__tickets"><b class="event-details--bold-tickets">${availableTickets}</b></p>
-          <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
-        </div>
-      </a>
-    `;
+    <a class="result-details__id" href="event.html?id=${event.id}">
+      <div class="result-image">
+        <img src="${imageUrl}" alt="${name}">
+      </div>
+      <h2 class="result-details__name">${name}</h2>
+      <div class="result-details">
+        <p class="result-details__date"><b class="event-details--bold">When:</b> ${date}</p>
+        <p class="result-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
+        <p class="result-details__category"><b class="event-details--bold">Category:</b> ${category}</p>
+        <p class="result-details__tickets"><b class="event-details--bold-tickets">${availableTickets}</b></p>
+        <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
+      </div>
+    </a>
+  `;
 
     return resultItem;
   };
@@ -57,7 +57,7 @@ export default function Search() {
 
     const city = cityInput.value;
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}&size=100`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
 
     fetch(url)
       .then((response) => response.json())
@@ -69,7 +69,7 @@ export default function Search() {
           events = events.filter((event) => event.classifications[0].segment.name.toLowerCase() === category);
         }
 
-        events.sort((a, b) => a.classifications[0].segment.name.localeCompare(b.classifications[0].segment.name));
+        
 
         // Saves events to localStorage
         localStorage.setItem('events', JSON.stringify(events));
