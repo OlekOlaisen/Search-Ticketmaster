@@ -38,8 +38,8 @@ export default function Search() {
     return resultItem;
   };
 
-  // Loads events from localStorage
-  const savedEvents = localStorage.getItem('events');
+  // Loads events from sessionStorage
+  const savedEvents = sessionStorage.getItem('events');
   let events = [];
 
   if (savedEvents) {
@@ -71,8 +71,8 @@ export default function Search() {
 
         
 
-        // Saves events to localStorage
-        localStorage.setItem('events', JSON.stringify(events));
+        // Saves events to sessionStorage
+        sessionStorage.setItem('events', JSON.stringify(events));
 
         events.forEach((event) => {
           const resultItem = createResultItem(event);
