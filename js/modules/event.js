@@ -4,7 +4,8 @@ export default function Event() {
   const urlParams = new URLSearchParams(window.location.search);
   const eventId = urlParams.get('id');
   const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
-  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}`;
+  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}&include=venue`;
+
 
 
   const eventDetailsContainer = document.querySelector('#event-details-container');
@@ -22,6 +23,8 @@ export default function Event() {
       const timeStart = event.dates.start.localTime?.slice(0, 5);
       const venue = event._embedded.venues[0].name;
       const address = event._embedded.venues[0].address;
+      const city = event._embedded.venues[0].city.name;
+      const country = event._embedded.venues[0].country.name;
       const imageUrl = event.images.find(image => image.width > 500)?.url;
       const ticketUrl = event.url;
       const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets unavailable';
@@ -48,7 +51,7 @@ export default function Event() {
             <p class="event-details__date"><b class="event-details--bold">Date:</b> ${date}</p>
             <p class="event-details__time"><b class="event-details--bold">Time:</b> ${timeStart}</p>
             <p class="event-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
-            <p class="event-details__address"><b class="event-details--bold">Address:</b> ${address.line1}</p>
+            <p class="event-details__address"><b class="event-details--bold">Address:</b> ${address.line1}, ${city}, ${country}</p>
             <p class="event-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
             <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
           </div>

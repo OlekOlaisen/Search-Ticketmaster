@@ -12,7 +12,7 @@
 	width: 100vw;
 	position: fixed;
 	top: 25%;
-	height: 500px;
+	height: 650px;
 	background-color: #fff;
 	display: flex;
 	flex-flow: row wrap;
@@ -73,10 +73,6 @@
 	width: 500px;
 }
 
-
-
-
-
 .event-details__button {
 	padding: 5px 10px;
 	background-color: var(--button-color);
@@ -115,7 +111,7 @@
 	.event__container {
 		width: 100vw;
 		top: 30%;
-		height: 700px;
+		height: 900px;
 		position: absolute;
 		background-color: #fff;
 		display: flex;
