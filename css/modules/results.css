@@ -1,3 +1,5 @@
+
+
 .results-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -6,7 +8,7 @@
 
 .result-item {
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: all 300ms ease-in-out;
@@ -21,7 +23,6 @@
 }
 
 .event-details--bold {
-
     color: black;
 }
 
@@ -32,8 +33,6 @@
 .red-text {
     color: red;
 }
-
-
 
 .result-item__image {
     width: 100%;
@@ -54,11 +53,10 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-   
 }
 
 .result-details__id {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .result-details__name {
@@ -66,34 +64,32 @@
     font-size: 1.24rem;
     font-weight: 700;
     color: #222;
-    font-family: var(---font-heading);
-
+    font-family: var(--font-heading);
 }
 
 .result-details__date {
     margin: 0 0 10px;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-weight: 400;
     color: #666;
 }
 
 .result-details__venue {
     margin: 0 0 10px;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-weight: 400;
     color: #666;
 }
 
 .result-details__tickets {
     margin: 0 0 10px;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-weight: 400;
-   
 }
 
 .result-details__category {
     margin: 0 0 10px;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-weight: 400;
     color: #666;
 }
@@ -102,10 +98,10 @@
     display: inline-block;
     margin-top: auto;
     padding: 10px 20px;
-    background-color: #026cdf;
-    border-radius: 5px;
+    background-color: var(--button-color);
+    border-radius: 10px;
     color: #fff;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-weight: 600;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out;
@@ -113,7 +109,5 @@
 }
 
 .result-details__button:hover {
-    background-color: #014791;
+    background-color: var(--button-color-hover);
 }
-
-

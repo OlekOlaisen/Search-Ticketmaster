@@ -1,17 +1,19 @@
 .header {
-	height: 4rem;
+	height: 10rem;
 	width: 100%;
 	-webkit-box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.33); 
 	box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.33);
-	background: #36D1DC; 
-	background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  
-	background: linear-gradient(to right, #5B86E5, #36D1DC); 
+	background: #0f0c29;
+	background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);	
+	background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .header-title {
 	color: #fff;
 	text-align: center;
-	padding: 0.6rem 0 0 0;
-	font-family: 'Hind Madurai', sans-serif;
+	font-family: var(--font-heading);
 	font-size: 2rem;
 }
