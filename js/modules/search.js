@@ -1,49 +1,52 @@
 export default function Search() {
   const searchForm = document.querySelector('#search-form');
-  const cityInput = document.querySelector('#city-input');
-  const categorySelect = document.querySelector('#category-select');
+  const citySearchInput = document.querySelector('#city-search-input');
   const resultsContainer = document.querySelector('#results-container');
   const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
-
-  
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
 
-    const city = cityInput.value;
+    const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
+    const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         resultsContainer.innerHTML = '';
-        let events = data._embedded.events;
 
-        if (category) {
-          events = events.filter((event) => event.classifications[0].segment.name.toLowerCase() === category);
+        if (data._embedded && data._embedded.events) {
+          let events = data._embedded.events;
+
+          if (category) {
+            events = events.filter((event) => event.classifications[0].segment.name.toLowerCase() === category);
+          }
+
+          // Saves events to sessionStorage
+          sessionStorage.setItem('events', JSON.stringify(events));
+
+          events.forEach((event) => {
+            const resultItem = createResultItem(event);
+            resultsContainer.appendChild(resultItem);
+          });
+        } else {
+          console.error('No events found');
         }
-
-        // Saves events to sessionStorage
-        sessionStorage.setItem('events', JSON.stringify(events));
-
-        events.forEach((event) => {
-          const resultItem = createResultItem(event);
-          resultsContainer.appendChild(resultItem);
-        });
+        
       })
       .catch((error) => console.error(error));
   };
 
   searchForm.addEventListener('submit', handleSearchSubmit);
 
-
   const createResultItem = (event) => {
     const name = event.name;
     const dateStr = event.dates.start.localDate;
     const dateArr = dateStr.split('-');
     const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
-    const venue = event._embedded.venues[0].name;
+    const venue = event._embedded?.venues?.[0]?.name || '';
     const imageUrl = event.images.find((image) => image.width > 500)?.url;
     const ticketUrl = event.url;
     const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets unavailable';
