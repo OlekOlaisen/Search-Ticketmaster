@@ -1,10 +1,17 @@
 export default function Event() {
+
+  // Get the event ID from the URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const eventId = urlParams.get('id');
-  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H`;
+  const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
+  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}`;
+
 
   const eventDetailsContainer = document.querySelector('#event-details-container');
 
+
+
+  // Fetches the event data 
   fetch(url)
     .then(response => response.json())
     .then(event => {
@@ -14,6 +21,7 @@ export default function Event() {
       const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
       const timeStart = event.dates.start.localTime?.slice(0, 5);
       const venue = event._embedded.venues[0].name;
+      const address = event._embedded.venues[0].address;
       const imageUrl = event.images.find(image => image.width > 500)?.url;
       const ticketUrl = event.url;
       const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets unavailable';
@@ -27,6 +35,7 @@ export default function Event() {
       }) : [];
       const performerImage = performerImages.filter(image => image != null)[0];
 
+      // Renders HTML
       eventDetailsContainer.innerHTML = `
         <div class="event-image__container">
           <img class="event-image" src="${imageUrl}" alt="${name}">
@@ -39,6 +48,7 @@ export default function Event() {
             <p class="event-details__date"><b class="event-details--bold">Date:</b> ${date}</p>
             <p class="event-details__time"><b class="event-details--bold">Time:</b> ${timeStart}</p>
             <p class="event-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
+            <p class="event-details__address"><b class="event-details--bold">Address:</b> ${address.line1}</p>
             <p class="event-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
             <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
           </div>

@@ -34,6 +34,7 @@
 .event-details__date,
 .event-details__time,
 .event-details__venue,
+.event-details__address,
 .event-details__tickets,
 .event-details__category {
 	font-family: var(--font-base);
