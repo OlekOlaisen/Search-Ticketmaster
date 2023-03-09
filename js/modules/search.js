@@ -46,7 +46,7 @@ export default function Search() {
     const venue = event._embedded.venues[0].name;
     const imageUrl = event.images.find((image) => image.width > 500)?.url;
     const ticketUrl = event.url;
-    const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not on sale';
+    const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets unavailable';
     const ticketStatusClass = event.dates.status.code === 'onsale' ? 'green-text' : 'red-text';
     const category = event.classifications?.[0]?.segment.name || '';
 
