@@ -72,14 +72,9 @@
 	width: 500px;
 }
 
-.event-details--bold {
-	color: rgb(56, 56, 56);
-}
 
-.event-details--bold-tickets {
-	color: rgb(56, 56, 56);
-	
-}
+
+
 
 .event-details__button {
 	padding: 5px 10px;

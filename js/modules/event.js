@@ -17,6 +17,7 @@ export default function Event() {
       const imageUrl = event.images.find(image => image.width > 500)?.url;
       const ticketUrl = event.url;
       const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets not yet on sale';
+      const ticketStatusClass = event.dates.status.code === 'onsale' ? 'green-text' : 'red-text';
       const category = event.classifications[0].segment.name;
       const performers = event._embedded.attractions ? event._embedded.attractions.map(attraction => attraction.name).join(", ") : '';
       const performerImages = event._embedded.attractions ? event._embedded.attractions.map(attraction => {
@@ -38,7 +39,7 @@ export default function Event() {
             <p class="event-details__date"><b class="event-details--bold">Date:</b> ${date}</p>
             <p class="event-details__time"><b class="event-details--bold">Time:</b> ${timeStart}</p>
             <p class="event-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
-            <p class="event-details__tickets"><b class="event-details--bold">${availableTickets}</b></p>
+            <p class="event-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
             <a class="event-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
           </div>
           <div class="event-performer-image__container">
