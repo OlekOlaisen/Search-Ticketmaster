@@ -10,7 +10,7 @@ export default function Search() {
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
 
     fetch(url)
       .then((response) => response.json())
@@ -54,10 +54,10 @@ export default function Search() {
     const category = event.classifications?.[0]?.segment.name || '';
 
     // Renders events in HTML
-    const resultItem = document.createElement('div');
+    const resultItem = document.createElement('a');
     resultItem.classList.add('result-item');
     resultItem.innerHTML = `
-    <a class="result-details__id" href="event.html?id=${event.id}">
+    <div class="result-details__id" href="event.html?id=${event.id}">
       <div class="result-image">
         <img src="${imageUrl}" alt="${name}">
       </div>
@@ -69,7 +69,7 @@ export default function Search() {
         <p class="result-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
         <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
       </div>
-    </a>
+    </div>
   `;
 
     return resultItem;
