@@ -83,6 +83,7 @@
 	text-decoration: none;
 	transition: background-color 0.2s ease-in-out;
 	font-family: var(--font-heading);
+	font-size: var(--font-size-base);
 	margin-top: 2rem;
 }
 

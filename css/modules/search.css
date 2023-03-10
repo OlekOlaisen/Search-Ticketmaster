@@ -10,55 +10,52 @@
 .search-form__label {
   margin-right: 0.5rem;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: var(--font-size-small);
   color: #333;
   margin-top: 1rem;
 }
 
 .search-form__input {
   padding: 0.4rem;
-  font-size: 0.8rem;
+  font-size: var(--font-size-small);
   border: 1px solid #ccc;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   transition: 200ms ease-in-out;
 }
 
 .search-form__input:focus {
-	outline: none;
-	border: 1px solid #000;
+  outline: none;
+  border: 1px solid #000;
 }
 
 .search-form__category-select {
   padding: 0.4rem;
-  font-size: 0.8rem;
+  font-size: var(--font-size-small);
   border: 1px solid #ccc;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
 
 .search-form__category-select:focus {
-	outline: none;
-	border: 1px solid #000;
+  outline: none;
+  border: 1px solid #000;
 }
 
 .search-form__button {
   padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  background-color: #026cdf;
+  font-size: var(--font-size-small);
+  background-color: var(--button-color);
   color: #fff;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   cursor: pointer;
   margin-right: 0.5rem;
   margin-top: 1rem;
 }
 
 .search-form__button:hover {
-  background-color: #014791;
+  background-color: var(--button-color-hover);
 }
-
-
-

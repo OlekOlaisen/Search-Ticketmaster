@@ -1,15 +1,16 @@
-
 :root {
-	--primary-color: #007bff;
-	--secondary-color: #6c757d; 
-	--button-color:#014791;
-	--button-color-hover:#026cdf; 
-	
-	
+	--primary-color: #6c5ce7;
+	/* Dark purple */
+	--secondary-color: #5a5a5a;
+	/* Light purple */
+	--button-color: #302b62;
+	/* Lighter purple */
+	--button-color-hover: #1e1952;
+	/* Darker purple */
+
 	--font-heading: 'Oswald', sans-serif;
 	--font-base: 'Overpass', sans-serif;
 	--font-size-large: 32px;
 	--font-size-base: 20px;
 	--font-size-small: 14px;
-	
 }
