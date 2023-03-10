@@ -54,10 +54,10 @@ export default function Search() {
     const category = event.classifications?.[0]?.segment.name || '';
 
     // Renders events in HTML
-    const resultItem = document.createElement('a');
+    const resultItem = document.createElement('div');
     resultItem.classList.add('result-item');
     resultItem.innerHTML = `
-    <div class="result-details__id" href="event.html?id=${event.id}">
+    <a class="result-details__id" href="event.html?id=${event.id}">
       <div class="result-image">
         <img src="${imageUrl}" alt="${name}">
       </div>
@@ -69,7 +69,7 @@ export default function Search() {
         <p class="result-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
         <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
       </div>
-    </div>
+    </a>
   `;
 
     return resultItem;
