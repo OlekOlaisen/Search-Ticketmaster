@@ -18,7 +18,7 @@
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	gap: 1rem;
 }
 
@@ -72,8 +72,6 @@
 	justify-content: center;
 }
 
-
-
 .mapboxgl-canvas {
 	width: 650px;
 	height: 650px;
@@ -84,6 +82,15 @@
 	width: 500px;
 	height: 500px;
 }
+
+.mapboxgl-ctrl, .mapboxgl-ctrl-attrib, .mapboxgl-compact {
+	display: none;
+}
+
+.mapboxgl-ctrl-bottom-left {
+	display: none;
+}
+
 
 .event-details__button {
 	padding: 5px 10px;
