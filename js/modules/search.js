@@ -10,7 +10,7 @@ export default function Search() {
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
 
     fetch(url)
       .then((response) => response.json())
