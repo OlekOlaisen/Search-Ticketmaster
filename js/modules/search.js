@@ -1,14 +1,21 @@
-
-
-
 export default function Search() {
   const searchForm = document.querySelector('#search-form');
   const citySearchInput = document.querySelector('#city-search-input');
   const resultsContainer = document.querySelector('#results-container');
   const apiSecret = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
 
+
+  const handleInputChange = (event) => {
+    
+    handleSearchSubmit(event);
+  };
+
+ 
+  citySearchInput.addEventListener('input', handleInputChange);
+  document.querySelector('#category-select').addEventListener('change', handleInputChange);
+  document.querySelector('#date-input').addEventListener('change', handleInputChange);
+
   const handleSearchSubmit = (event) => {
-    event.preventDefault();
 
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
@@ -36,7 +43,7 @@ export default function Search() {
             events = events.filter((event) => event.dates.start.localDate === date);
           }
 
-          // Saves events to sessionStorage
+         
           sessionStorage.setItem('events', JSON.stringify(events));
 
           events.forEach((event) => {
@@ -51,9 +58,6 @@ export default function Search() {
       .catch((error) => console.error(error));
   };
 
-
-  searchForm.addEventListener('submit', handleSearchSubmit);
-
   const createResultItem = (event) => {
     const name = event.name;
     const dateStr = event.dates.start.localDate;
@@ -66,7 +70,7 @@ export default function Search() {
     const ticketStatusClass = event.dates.status.code === 'onsale' ? 'green-text' : 'red-text';
     const category = event.classifications?.[0]?.segment.name || '';
 
-    // Renders events in HTML
+ 
     const resultItem = document.createElement('div');
     resultItem.classList.add('result-item');
     resultItem.innerHTML = `
@@ -88,14 +92,14 @@ export default function Search() {
     return resultItem;
   };
 
-  // Loads events from sessionStorage
+
   const savedEvents = sessionStorage.getItem('events');
   let events = [];
 
   if (savedEvents) {
     events = JSON.parse(savedEvents);
 
-    // Renders saved events
+ 
     events.forEach((event) => {
       const resultItem = createResultItem(event);
       resultsContainer.appendChild(resultItem);
@@ -106,8 +110,9 @@ export default function Search() {
   const dateInput = document.querySelector('#date-input');
 
   const handleClearDateClick = (event) => {
-  dateInput.value = '';
-};
+    dateInput.value = '';
+    handleSearchSubmit(event); 
+  };
 
-clearDateButton.addEventListener('click', handleClearDateClick);
+  clearDateButton.addEventListener('click', handleClearDateClick);
 }
