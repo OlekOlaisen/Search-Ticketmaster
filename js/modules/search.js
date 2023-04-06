@@ -1,11 +1,11 @@
-import  apiKey  from '../env.js';
+
 
 
 export default function Search() {
   const searchForm = document.querySelector('#search-form');
   const citySearchInput = document.querySelector('#city-search-input');
   const resultsContainer = document.querySelector('#results-container');
-  const apiSecret = apiKey;
+  const apiSecret = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
