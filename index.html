@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 	<script type="module" src="./js/main.js"></script>
 	<title>Ticketmaster Search</title>
 </head>
+
 <body>
 	<header class="header">
 		<h1 class="header-title">Ticketmaster Search</h1>
@@ -14,12 +16,14 @@
 	<main class="container">
 		<aside class="container__search">
 			<form id="search-form" class="search-form">
-				<label class="search-form__label" for="city-search-input">Search: <small>city, artist, venue or event</small> </label>
+				<label class="search-form__label" for="city-search-input">Search: <small>city, artist, venue or
+						event</small> </label>
 				<input class="search-form__input" type="text" id="city-search-input" name="city-search" required
 					placeholder="Type to search...">
-				
-				<label class="search-form__label" for="category-select"></label>
-				<select class="search-form__category-select" id="category-select" name="category">
+
+				<label class="search-form__label" for="category-select">Categories:</label>
+				<select class="search-form__category-select" id="category-select" name="category"
+					aria-label="Select a category" role="combobox">
 					<option value="">All categories</option>
 					<option value="music">Music</option>
 					<option value="sports">Sports</option>
@@ -27,9 +31,12 @@
 					<option value="film">Film</option>
 					<option value="miscellaneous">Other</option>
 				</select>
-				<span><input class="search-form__input" type="date" id="date-input" name="date" placeholder="Select a date">
-				<button class="search-form__button-clear" type="button" id="clear-date-button">Clear date</button></span>
-				
+				<label class="search-form__label" for="date-input">Date:</label>
+				<span><input class="search-form__input" type="date" id="date-input" name="date" placeholder="Select a date"
+						title="Please select a date" aria-label="Select a date" role="textbox">
+					<button class="search-form__button-clear" type="button" id="clear-date-button" title="Clear date">Clear
+						date</button></span>
+
 			</form>
 		</aside>
 
@@ -38,4 +45,5 @@
 		</section>
 	</main>
 </body>
+
 </html>
