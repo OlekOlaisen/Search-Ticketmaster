@@ -26,6 +26,7 @@ export default function Search() {
     const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
     const dateInput = document.querySelector('#date-input');
+    const now = new Date().toISOString().split('T')[0];
     const date = dateInput.value ? new Date(dateInput.value).toISOString().split('T')[0] : null;
     let url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiSecret}&size=100&sort=date,asc`;
 
@@ -50,6 +51,7 @@ export default function Search() {
             events = events.filter((event) => event.dates.start.localDate === date);
           }
 
+          events = events.filter((event) => event.dates.start.localDate >= now);
          
           sessionStorage.setItem('events', JSON.stringify(events));
 

@@ -37,7 +37,7 @@ export function Event() {
       const performers = event._embedded.attractions ? event._embedded.attractions.map(attraction => attraction.name).join(", ") : '';
       const minPrice = event.priceRanges ? event.priceRanges[0].min.toFixed(2) : null;
       const maxPrice = event.priceRanges ? event.priceRanges[0].max.toFixed(2) : null;
-      const priceRange = minPrice && maxPrice && minPrice !== maxPrice ? `${minPrice}NOK - ${maxPrice}NOK` : maxPrice ? `${maxPrice}NOK` : 'Price not available';
+      const priceRange = minPrice && maxPrice && minPrice !== maxPrice ? `${minPrice}  - ${maxPrice}` : maxPrice ? `${maxPrice}` : 'Price not available';
       const performerImages = event._embedded.attractions ? event._embedded.attractions.map(attraction => {
         if (attraction.images.length > 0) {
           return attraction.images.find(image => image.width > 500)?.url;
