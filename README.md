@@ -46,7 +46,7 @@ Then, open the `index.html` file in your web browser to use the application.
 
 ## Demo
 
-You can see a live demo of the application at: https://ticketmasterbycity.netlify.app/
+You can see a live demo of the application at: https://ticketmastersearch.netlify.app/
 
 
 ## License
