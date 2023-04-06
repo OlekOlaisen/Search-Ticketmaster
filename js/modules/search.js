@@ -1,8 +1,11 @@
+import { apiKey } from '../env.js';
+
+
 export default function Search() {
   const searchForm = document.querySelector('#search-form');
   const citySearchInput = document.querySelector('#city-search-input');
   const resultsContainer = document.querySelector('#results-container');
-  const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
+  const apiSecret = apiKey;
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -12,7 +15,7 @@ export default function Search() {
     const category = categorySelect.value;
     const dateInput = document.querySelector('#date-input');
     const date = dateInput.value ? new Date(dateInput.value).toISOString().split('T')[0] : null;
-    let url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
+    let url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiSecret}&size=100&sort=date,asc`;
 
     if (date) {
       url += `&startDateTime=${date}T00:00:00Z&endDateTime=${date}T23:59:59Z`;
