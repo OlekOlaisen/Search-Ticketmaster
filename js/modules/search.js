@@ -101,4 +101,13 @@ export default function Search() {
       resultsContainer.appendChild(resultItem);
     });
   }
+
+  const clearDateButton = document.querySelector('#clear-date-button');
+  const dateInput = document.querySelector('#date-input');
+
+  const handleClearDateClick = (event) => {
+  dateInput.value = '';
+};
+
+clearDateButton.addEventListener('click', handleClearDateClick);
 }

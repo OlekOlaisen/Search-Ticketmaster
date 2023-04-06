@@ -46,6 +46,22 @@
 
 .search-form__button {
   padding: 0.4rem 0.8rem;
+  font-size: var(--font-size-base);
+  background-color: var(--button-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+}
+
+.search-form__button:hover {
+  background-color: var(--button-color-hover);
+}
+
+.search-form__button-clear {
+  padding: 0.4rem 0.8rem;
   font-size: var(--font-size-small);
   background-color: var(--button-color);
   color: #fff;
@@ -56,6 +72,6 @@
   margin-top: 1rem;
 }
 
-.search-form__button:hover {
+.search-form__button-clear:hover {
   background-color: var(--button-color-hover);
 }
