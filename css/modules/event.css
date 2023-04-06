@@ -17,6 +17,8 @@
 	background-color: #fff;
 	display: flex;
 	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
 	gap: 1rem;
 }
 
@@ -36,6 +38,7 @@
 .event-details__venue,
 .event-details__address,
 .event-details__tickets,
+.event-details__price,
 .event-details__category {
 	font-family: var(--font-base);
 	font-size: var(--font-size-base);
@@ -69,8 +72,17 @@
 	justify-content: center;
 }
 
-.event-details__performer-image {
-	width: 650px;
+
+
+.mapboxgl-canvas {
+width: 650px;
+height: 650px;
+border: 1px solid lightgrey;
+}
+
+.mapboxgl-map {
+	width: 500px;
+	height: 500px;
 }
 
 .event-details__button {
@@ -129,10 +141,10 @@
 	.event__image-container {
 		display: none;
 	}
-	
-	.event-details__name {
-		
-	}
+
+		.mapboxgl-map {
+			display: none;
+		}
 	
 	.event-performer-image__container {
 		display: none;
@@ -150,6 +162,11 @@
 			display: flex;
 			flex-flow: column;
 		}
+
+				.mapboxgl-map {
+					display: none;
+				}
+		
 }
 
 /* Adjust the grid for very small screens */
@@ -163,6 +180,10 @@
 		display: flex;
 		flex-flow: column;
 	}
+
+		.mapboxgl-map {
+			display: none;
+		}
 	
 	.event__image-container {
 		display: none;
