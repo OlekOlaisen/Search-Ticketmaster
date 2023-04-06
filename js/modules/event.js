@@ -1,10 +1,12 @@
+import { apiKey } from '../env.js';
+
 export default function Event() {
 
   // Get the event ID from the URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const eventId = urlParams.get('id');
-  const apiKey = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
-  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}&include=venue`;
+  const apiSecret = apiKey;
+  const url = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiSecret}&include=venue`;
   
   const eventDetailsContainer = document.querySelector('#event-details-container');
   const cleanUrl = window.location.href.replace('event.html', '');
