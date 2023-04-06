@@ -16,7 +16,7 @@ The application has the following features:
 
 - Search for events by city, event, artist or venue.
 - Filter events by category and date.
-- Display search results on the webpage
+- Display search results immediately on the webpage
 - Click on an event to view event details on a separate page
 - Saves search results to session storage
 
