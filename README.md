@@ -14,10 +14,11 @@
 
 The application has the following features:
 
-- Search for events by city, event, artist, venue and category
+- Search for events by city, event, artist or venue.
+- Filter events by category and date.
 - Display search results on the webpage
 - Click on an event to view event details on a separate page
-- Save search results to session storage
+- Saves search results to session storage
 
 ## Minimum Viable Product (MVP)
 
