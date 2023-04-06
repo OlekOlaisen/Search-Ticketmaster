@@ -5,12 +5,17 @@ export default function Search() {
   const apiSecret = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
 
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault(); // Prevent form submission
+    handleSearchSubmit(event);
+  };
+
   const handleInputChange = (event) => {
     
     handleSearchSubmit(event);
   };
 
- 
+  searchForm.addEventListener('submit', handleFormSubmit);
   citySearchInput.addEventListener('input', handleInputChange);
   document.querySelector('#category-select').addEventListener('change', handleInputChange);
   document.querySelector('#date-input').addEventListener('change', handleInputChange);
@@ -27,6 +32,8 @@ export default function Search() {
     if (date) {
       url += `&startDateTime=${date}T00:00:00Z&endDateTime=${date}T23:59:59Z`;
     }
+
+    event.preventDefault();
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
