@@ -10,8 +10,13 @@ export default function Search() {
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
+    const dateInput = document.querySelector('#date-input');
+    const date = dateInput.value ? new Date(dateInput.value).toISOString().split('T')[0] : null;
+    let url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiKey}&size=100&sort=date,asc`;
 
+    if (date) {
+      url += `&startDateTime=${date}T00:00:00Z&endDateTime=${date}T23:59:59Z`;
+    }
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -24,6 +29,10 @@ export default function Search() {
             events = events.filter((event) => event.classifications[0].segment.name.toLowerCase() === category);
           }
 
+          if (date) {
+            events = events.filter((event) => event.dates.start.localDate === date);
+          }
+
           // Saves events to sessionStorage
           sessionStorage.setItem('events', JSON.stringify(events));
 
@@ -34,10 +43,11 @@ export default function Search() {
         } else {
           console.error('No events found');
         }
-        
+
       })
       .catch((error) => console.error(error));
   };
+
 
   searchForm.addEventListener('submit', handleSearchSubmit);
 
