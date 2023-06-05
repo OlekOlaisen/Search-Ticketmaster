@@ -2,13 +2,13 @@
 
 
 
-<h1 align="center">Ticketmaster by City</h1>
+<h1 align="center">Ticketmaster Search</h1>
 
 
 
 
 
-<p align="center"> Ticketmaster by City is a web application that allows users to search for events based on city and category using the Ticketmaster API. The code provided consists of two JavaScript functions, "Search" and "Event", that utilize the Ticketmaster API to search for events and display event details respectively.
+<p align="center"> Ticketmaster Search is a web application that allows users to search for events based on city, venue, event, category and date using the Ticketmaster API. The code provided consists of two JavaScript functions, "Search" and "Event", that utilize the Ticketmaster API to search for events and display event details respectively.
 
 ## Features
 
