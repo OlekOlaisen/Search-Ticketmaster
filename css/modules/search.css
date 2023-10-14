@@ -80,6 +80,20 @@ small {
   background-color: var(--button-color-hover);
 }
 
+.container__search-favorites {
+  
+  padding: 0.4rem 5rem;
+  font-size: var(--font-size-small);
+  background-color: var(--button-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+
+}
+
 
 
 
