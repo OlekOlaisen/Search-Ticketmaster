@@ -69,12 +69,20 @@
 
 .result-details__date {
     margin: 0 0 10px;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--button-color);
+}
+
+.result-details__venue {
+    margin: 0 0 10px;
     font-size: var(--font-size-small);
     font-weight: 400;
     color: #666;
 }
 
-.result-details__venue {
+.result-details__city {
+    text-transform: uppercase;
     margin: 0 0 10px;
     font-size: var(--font-size-small);
     font-weight: 400;

@@ -71,8 +71,11 @@ export default function Search() {
     const name = event.name;
     const dateStr = event.dates.start.localDate;
     const dateArr = dateStr.split('-');
-    const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
+    const date = `${dateArr[2]}.${getMonthName(parseInt(dateArr[1]))} ${dateArr[0]}`;
+    const timeStart = event.dates.start.localTime?.slice(0, 5);
+    const timeDisplay = timeStart ? ` kl. ${timeStart}` : '';
     const venue = event._embedded?.venues?.[0]?.name || '';
+    const city = event._embedded.venues[0].city.name;
     const imageUrl = event.images.find((image) => image.width > 500)?.url;
     const ticketUrl = event.url;
     const availableTickets = event.dates.status.code === 'onsale' ? 'Available tickets!' : 'Tickets unavailable';
@@ -89,9 +92,11 @@ export default function Search() {
       </div>
       <h2 class="result-details__name">${name}</h2>
       <div class="result-details">
-        <p class="result-details__date"><b class="event-details--bold">When:</b> ${date}</p>
-        <p class="result-details__venue"><b class="event-details--bold">Venue:</b> ${venue}</p>
-        <p class="result-details__category"><b class="event-details--bold">Category:</b> ${category}</p>
+      <p class="result-details__category"><b class="event-details--bold"> ${category}</p>
+        <p class="result-details__date"><b class="event-details--bold"></b> ${date} ${timeDisplay}</p>
+        <p class="result-details__city"> ${city}</p>
+        <p class="result-details__venue"> ${venue}</p>
+        
         <p class="result-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
         <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
       </div>
@@ -101,6 +106,14 @@ export default function Search() {
     return resultItem;
   };
 
+  const getMonthName = (monthNumber) => {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    return months[monthNumber - 1];
+  };
+  
 
   const savedEvents = sessionStorage.getItem('events');
   let events = [];
