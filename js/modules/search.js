@@ -66,6 +66,26 @@ export default function Search() {
       })
       .catch((error) => console.error(error));
   };
+  
+ document.addEventListener('DOMContentLoaded', () => {
+    // Select all elements with the class 'heartIcon'
+    const heartIcons = document.querySelectorAll('.heartIcon');
+
+    // Add event listeners to each heart icon
+    heartIcons.forEach(heartIcon => {
+        heartIcon.addEventListener('mouseover', () => {
+            heartIcon.classList.remove('bi-heart');
+            heartIcon.classList.add('bi-heart-fill');
+        });
+
+        heartIcon.addEventListener('mouseout', () => {
+            heartIcon.classList.remove('bi-heart-fill');
+            heartIcon.classList.add('bi-heart');
+        });
+    });
+});
+
+
 
   const createResultItem = (event) => {
     const name = event.name;
@@ -88,23 +108,33 @@ export default function Search() {
     resultItem.innerHTML = `
     <a class="result-details__id" href="event.html?id=${event.id}">
       <div class="result-image">
-        <img src="${imageUrl}" alt="${name}">
+        <img class="result-image-image" src="${imageUrl}" alt="${name}">
+        
       </div>
+      
       <h2 class="result-details__name">${name}</h2>
       <div class="result-details">
       <p class="result-details__category"><b class="event-details--bold"> ${category}</p>
         <p class="result-details__date"><b class="event-details--bold"></b> ${date} ${timeDisplay}</p>
         <p class="result-details__city"> ${city}</p>
         <p class="result-details__venue"> ${venue}</p>
-        
         <p class="result-details__tickets"><b class="event-details--bold ${ticketStatusClass}">${availableTickets}</b></p>
         <a class="result-details__button" href="${ticketUrl}" target="_blank">Buy Tickets</a>
+        
+<button class="result-details__favorite">
+    <i class="bi bi-heart heartIcon"></i>
+</button>
+
+
+        
       </div>
     </a>
   `;
 
     return resultItem;
   };
+
+  
 
   const getMonthName = (monthNumber) => {
     const months = [
@@ -113,6 +143,8 @@ export default function Search() {
     ];
     return months[monthNumber - 1];
   };
+
+  
   
 
   const savedEvents = sessionStorage.getItem('events');
