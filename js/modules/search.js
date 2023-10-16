@@ -115,18 +115,36 @@ export default function Search() {
 
   
 
+    // Handle hover behavior for the heart icon
     const heartIcon = resultItem.querySelector('.heartIcon');
     heartIcon.addEventListener('mouseover', () => {
-        heartIcon.classList.remove('bi-heart');
-        heartIcon.classList.add('bi-heart-fill');
+        if (!heartIcon.classList.contains('bi-heart-fill')) {
+            heartIcon.classList.remove('bi-heart');
+            heartIcon.classList.add('bi-heart-fill');
+        }
     });
     heartIcon.addEventListener('mouseout', () => {
-        heartIcon.classList.remove('bi-heart-fill');
-        heartIcon.classList.add('bi-heart');
+        if (!heartIcon.classList.contains('clicked')) {
+            heartIcon.classList.remove('bi-heart-fill');
+            heartIcon.classList.add('bi-heart');
+        }
+    });
+
+    // Handle click behavior to toggle the heart icon
+    heartIcon.addEventListener('click', () => {
+        if (heartIcon.classList.contains('bi-heart') || !heartIcon.classList.contains('clicked')) {
+            heartIcon.classList.remove('bi-heart');
+            heartIcon.classList.add('bi-heart-fill');
+            heartIcon.classList.add('clicked');
+        } else {
+            heartIcon.classList.remove('bi-heart-fill');
+            heartIcon.classList.add('bi-heart');
+            heartIcon.classList.remove('clicked');
+        }
     });
 
     return resultItem;
-  };
+};
 
   
 
