@@ -67,24 +67,6 @@ export default function Search() {
       .catch((error) => console.error(error));
   };
   
- document.addEventListener('DOMContentLoaded', () => {
-    // Select all elements with the class 'heartIcon'
-    const heartIcons = document.querySelectorAll('.heartIcon');
-
-    // Add event listeners to each heart icon
-    heartIcons.forEach(heartIcon => {
-        heartIcon.addEventListener('mouseover', () => {
-            heartIcon.classList.remove('bi-heart');
-            heartIcon.classList.add('bi-heart-fill');
-        });
-
-        heartIcon.addEventListener('mouseout', () => {
-            heartIcon.classList.remove('bi-heart-fill');
-            heartIcon.classList.add('bi-heart');
-        });
-    });
-});
-
 
 
   const createResultItem = (event) => {
@@ -130,6 +112,18 @@ export default function Search() {
       </div>
     </a>
   `;
+
+  
+
+    const heartIcon = resultItem.querySelector('.heartIcon');
+    heartIcon.addEventListener('mouseover', () => {
+        heartIcon.classList.remove('bi-heart');
+        heartIcon.classList.add('bi-heart-fill');
+    });
+    heartIcon.addEventListener('mouseout', () => {
+        heartIcon.classList.remove('bi-heart-fill');
+        heartIcon.classList.add('bi-heart');
+    });
 
     return resultItem;
   };
