@@ -34,6 +34,7 @@ small {
   border: 1px solid #000;
 }
 
+
 .search-form__category-select {
   padding: 0.4rem;
   font-size: var(--font-size-small);

@@ -3,78 +3,70 @@ export default function Search() {
   const citySearchInput = document.querySelector('#city-search-input');
   const resultsContainer = document.querySelector('#results-container');
   const apiSecret = '3AHIueOLGj4rurjN2j5YRIF5Pqvmi51H';
-  
+
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  
+
   const updateFavoritesInLocalStorage = () => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   };
-  
+
   const handleFormSubmit = (event) => {
     event.preventDefault(); // Prevent form submission
     handleSearchSubmit(event);
   };
-  
+
   const handleInputChange = (event) => {
-    
     handleSearchSubmit(event);
   };
-  
+
   searchForm.addEventListener('submit', handleFormSubmit);
   citySearchInput.addEventListener('input', handleInputChange);
   document.querySelector('#category-select').addEventListener('change', handleInputChange);
-  document.querySelector('#date-input').addEventListener('change', handleInputChange);
   
+  // Date range inputs
+  const startDateInput = document.querySelector('#start-date-input');
+  const endDateInput = document.querySelector('#end-date-input');
+  startDateInput.addEventListener('change', handleInputChange);
+  endDateInput.addEventListener('change', handleInputChange);
+
   const handleSearchSubmit = (event) => {
-    
+    event.preventDefault();
+
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
     const category = categorySelect.value;
-    const dateInput = document.querySelector('#date-input');
-    const now = new Date().toISOString().split('T')[0];
-    const date = dateInput.value ? new Date(dateInput.value).toISOString().split('T')[0] : null;
+
+    const startDate = startDateInput.value ? new Date(startDateInput.value).toISOString().split('T')[0] : '';
+    const endDate = endDateInput.value ? new Date(endDateInput.value).toISOString().split('T')[0] : '';
     let url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&locale=*&classificationName=${category}&apikey=${apiSecret}&size=100&sort=date,asc`;
-    
-    if (date) {
-      url += `&startDateTime=${date}T00:00:00Z&endDateTime=${date}T23:59:59Z`;
+
+    if (startDate && endDate) {
+      url += `&startDateTime=${startDate}T00:00:00Z&endDateTime=${endDate}T23:59:59Z`;
     }
-    
-    event.preventDefault();
+
     fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      resultsContainer.innerHTML = '';
-      
-      if (data._embedded && data._embedded.events) {
-        let events = data._embedded.events;
-        
-        if (category) {
-          events = events.filter((event) => event.classifications[0].segment.name.toLowerCase() === category);
+      .then((response) => response.json())
+      .then((data) => {
+        resultsContainer.innerHTML = '';
+
+        if (data._embedded && data._embedded.events) {
+          let events = data._embedded.events;
+
+          // Event filtering for the date range is done through the API call in this case
+
+          sessionStorage.setItem('events', JSON.stringify(events));
+
+          events.forEach((event) => {
+            const resultItem = createResultItem(event);
+            resultsContainer.appendChild(resultItem);
+          });
+        } else {
+          console.error('No events found');
         }
-        
-        if (date) {
-          events = events.filter((event) => event.dates.start.localDate === date);
-        }
-        
-        events = events.filter((event) => event.dates.start.localDate >= now);
-        
-        sessionStorage.setItem('events', JSON.stringify(events));
-        
-        events.forEach((event) => {
-          const resultItem = createResultItem(event);
-          resultsContainer.appendChild(resultItem);
-        });
-      } else {
-        console.error('No events found');
-      }
-      
-    })
-    .catch((error) => console.error(error));
+      })
+      .catch((error) => console.error(error));
   };
-  
-  
-  
-  
+
   
   const createResultItem = (event) => {
     
@@ -191,11 +183,12 @@ export default function Search() {
   }
   
   const clearDateButton = document.querySelector('#clear-date-button');
-  const dateInput = document.querySelector('#date-input');
+
   
-  const handleClearDateClick = (event) => {
-    dateInput.value = '';
-    handleSearchSubmit(event); 
+    const handleClearDateClick = (event) => {
+    startDateInput.value = '';
+    endDateInput.value = '';
+    handleSearchSubmit(event);
   };
   
   clearDateButton.addEventListener('click', handleClearDateClick);

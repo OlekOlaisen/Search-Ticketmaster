@@ -31,12 +31,16 @@
 					<option value="film">Film</option>
 					<option value="miscellaneous">Other</option>
 				</select>
-				<label class="search-form__label" for="date-input">Date:</label>
-				<span><input class="search-form__input" type="date" id="date-input" name="date" placeholder="Select a date"
-						title="Please select a date" aria-label="Select a date" role="textbox">
-					<button class="search-form__button-clear" type="button" id="clear-date-button" title="Clear date">Clear
-						date</button></span>
-<a href="./favorites.html" class="container__search-favorites">My events</a>
+
+
+				<label for="start-date-input">Start Date:</label>
+				<input type="date" id="start-date-input">
+				<label for="end-date-input">End Date:</label>
+				<input type="date" id="end-date-input">
+
+				
+				<button class="search-form__button-clear" type="button" id="clear-date-button" title="Clear date">Clear dates</button>
+				<a href="./favorites.html" class="container__search-favorites">My events</a>
 			</form>
 
 			
