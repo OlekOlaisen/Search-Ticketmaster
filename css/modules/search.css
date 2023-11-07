@@ -35,6 +35,27 @@ small {
 }
 
 
+
+.date-range-container {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.date-range-container input[type="date"] {
+  border: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.date-range-container input[type="date"]:first-child {
+  border-right: 1px solid #ccc;
+}
+
+
+
+
+
 .search-form__category-select {
   padding: 0.4rem;
   font-size: var(--font-size-small);
