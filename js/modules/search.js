@@ -33,8 +33,11 @@ export default function Search() {
   startDateInput.addEventListener('change', handleInputChange);
   endDateInput.addEventListener('change', handleInputChange);
 
+  let currentView = "searchResults"; 
+
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+    currentView = "searchResults";
 
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
@@ -74,6 +77,8 @@ export default function Search() {
   function showFavoritedEvents() {
     event.preventDefault();
   event.stopPropagation();
+
+   currentView = "favorites";
     resultsContainer.innerHTML = ""; // Clear current results
 
     // Retrieve the latest favorites from local storage in case they were updated
@@ -158,19 +163,20 @@ export default function Search() {
     
     heartIcon.addEventListener("click", () => {
       if (!heartIcon.classList.contains("clicked")) {
-        heartIcon.classList.add("bi-heart-fill");
-        heartIcon.classList.add("clicked");
-
-        // Add the event to favorites
+        // Add to favorites
+        heartIcon.classList.add("bi-heart-fill", "clicked");
         favorites.push(event);
         updateFavoritesInLocalStorage();
       } else {
-        heartIcon.classList.remove("bi-heart-fill");
-        heartIcon.classList.add("bi-heart");
-        heartIcon.classList.remove("clicked");
+        // Remove from favorites
+        heartIcon.classList.remove("bi-heart-fill", "bi-heart", "clicked");
 
-        resultItem.remove();
-        // Remove the event from favorites
+        // Conditionally remove the item only if in favorites view
+        if (currentView === "favorites") {
+          resultItem.remove(); // Only remove if unfavorited in favorites view
+        }
+
+        // Remove the event from favorites array
         favorites = favorites.filter((favEvent) => favEvent.id !== event.id);
         updateFavoritesInLocalStorage();
       }

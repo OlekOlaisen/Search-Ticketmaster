@@ -24,7 +24,9 @@ export function Event() {
       const date = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
       const timeStart = event.dates.start.localTime?.slice(0, 5);
       const venue = event._embedded.venues[0].name;
-      const address = event._embedded.venues[0].address;
+      const address = event._embedded.venues[0].address || {
+        line1: "Address not available",
+      };
       const longitude = event._embedded.venues[0].location.longitude;
       const latitude = event._embedded.venues[0].location.latitude;
       const city = event._embedded.venues[0].city.name;
