@@ -1,61 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" src="./js/main.js"></script>
+    <title>Ticketmaster Search</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/main.css">
-	<script type="module" src="./js/main.js"></script>
-	<title>Ticketmaster Search</title>
-</head>
+  <body>
+    <header class="header">
+      <h1 class="header-title">Ticketmaster Search</h1>
+    </header>
+    <main class="container">
+      <aside class="container__search">
+        <form id="search-form" class="search-form">
+          <label class="search-form__label" for="city-search-input"
+            >Search: <small>city, artist, venue or event</small>
+          </label>
+          <input
+            class="search-form__input"
+            type="text"
+            id="city-search-input"
+            name="city-search"
+            required
+            placeholder="Type to search..."
+          />
 
-<body>
-	<header class="header">
-		<h1 class="header-title">Ticketmaster Search</h1>
-	</header>
-	<main class="container">
-		<aside class="container__search">
-			<form id="search-form" class="search-form">
-				<label class="search-form__label" for="city-search-input">Search: <small>city, artist, venue or
-						event</small> </label>
-				<input class="search-form__input" type="text" id="city-search-input" name="city-search" required
-					placeholder="Type to search...">
+          <label class="search-form__label" for="category-select"
+            >Categories:</label
+          >
+          <select
+            class="search-form__category-select"
+            id="category-select"
+            name="category"
+            aria-label="Select a category"
+            role="combobox"
+          >
+            <option value="">All categories</option>
+            <option value="music">Music</option>
+            <option value="sports">Sports</option>
+            <option value="arts-theater">Arts &amp; Theater</option>
+            <option value="film">Film</option>
+            <option value="miscellaneous">Other</option>
+          </select>
 
-				<label class="search-form__label" for="category-select">Categories:</label>
-				<select class="search-form__category-select" id="category-select" name="category"
-					aria-label="Select a category" role="combobox">
-					<option value="">All categories</option>
-					<option value="music">Music</option>
-					<option value="sports">Sports</option>
-					<option value="arts-theater">Arts &amp; Theater</option>
-					<option value="film">Film</option>
-					<option value="miscellaneous">Other</option>
-				</select>
-
-
-				<!-- <label for="start-date-input">Start Date:</label>
+          <!-- <label for="start-date-input">Start Date:</label>
 				<input type="date" id="start-date-input">
 				<label for="end-date-input">End Date:</label>
 				<input type="date" id="end-date-input"> -->
 
-				<div class="date-range-container">
-  <input type="date" id="start-date-input">
-  <input type="date" id="end-date-input">
-</div>
+          <div class="date-range-container">
+            <input type="date" id="start-date-input" />
+            <input type="date" id="end-date-input" />
+          </div>
 
+          <button
+            class="search-form__button-clear"
+            type="button"
+            id="clear-date-button"
+            title="Clear date"
+          >
+            Clear dates
+          </button>
+          <button class="container__search-favorites" id="my-events-button">
+            My Events
+          </button>
+        </form>
+      </aside>
 
-				<button class="search-form__button-clear" type="button" id="clear-date-button" title="Clear date">Clear dates</button>
-				<button class="container__search-favorites" id="my-events-button">My Events</button>
-
-			</form>
-
-			
-		</aside>
-
-		<section class="container__results">
-			<div class="results-container" id="results-container"></div>
-		</section>
-	</main>
-</body>
-
+      <section class="container__results">
+        <div class="results-container" id="results-container"></div>
+      </section>
+    </main>
+  </body>
 </html>

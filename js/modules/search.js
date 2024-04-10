@@ -35,9 +35,26 @@ export default function Search() {
 
   let currentView = "searchResults"; 
 
+  const displaySkeletonLoaders = () => {
+    const skeletonsCount = 5; // Example: 5 skeleton loaders
+    let skeletonsHTML = "";
+    for (let i = 0; i < skeletonsCount; i++) {
+      skeletonsHTML += `
+      <div class="skeleton-wrapper">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-text skeleton-title"></div>
+        <div class="skeleton-text skeleton-date"></div>
+        <div class="skeleton-text skeleton-location"></div>
+      </div>
+    `;
+    }
+    resultsContainer.innerHTML = skeletonsHTML;
+  };
+
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     currentView = "searchResults";
+    displaySkeletonLoaders();
 
     const searchQuery = citySearchInput.value.trim().split(/\s+/).join('%20');
     const categorySelect = document.querySelector('#category-select');
@@ -54,7 +71,7 @@ export default function Search() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        resultsContainer.innerHTML = '';
+        resultsContainer.innerHTML = "";
 
         if (data._embedded && data._embedded.events) {
           let events = data._embedded.events;

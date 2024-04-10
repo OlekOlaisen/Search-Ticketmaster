@@ -34,8 +34,6 @@ small {
   border: 1px solid #000;
 }
 
-
-
 .date-range-container {
   display: flex;
   border: 1px solid #ccc;
@@ -52,9 +50,68 @@ small {
   border-right: 1px solid #ccc;
 }
 
+.skeleton-wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px; 
+  overflow: hidden; 
+}
 
+.skeleton-image,
+.skeleton-text {
+  position: relative;
+  overflow: hidden; 
+  background-color: #ccc;
+  border-radius: 4px; 
+}
 
+.skeleton-image {
+  width: 100%;
+  height: 150px;
+}
 
+.skeleton-text {
+  height: 20px;
+  
+}
+
+.skeleton-title {
+  width: 80%;
+}
+.skeleton-date {
+  width: 60%;
+}
+.skeleton-location {
+  width: 70%;
+}
+
+.skeleton-image::before,
+.skeleton-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%; /* Start the animation from the left */
+  height: 100%;
+  width: 150%; /* Width should be enough to cover the entire element */
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #e0e0e0 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 100%;
+  }
+}
 
 .search-form__category-select {
   padding: 0.4rem;
@@ -103,7 +160,6 @@ small {
 }
 
 .container__search-favorites {
-  
   padding: 0.4rem 5rem;
   font-size: var(--font-size-small);
   background-color: var(--button-color);
@@ -113,9 +169,4 @@ small {
   cursor: pointer;
   margin-right: 0.5rem;
   margin-top: 1rem;
-
 }
-
-
-
-
