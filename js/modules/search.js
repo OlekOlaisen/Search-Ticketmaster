@@ -22,6 +22,10 @@ export default function Search() {
   searchForm.addEventListener('submit', handleFormSubmit);
   citySearchInput.addEventListener('input', handleInputChange);
   document.querySelector('#category-select').addEventListener('change', handleInputChange);
+  document
+    .querySelector("#my-events-button")
+    .addEventListener("click", showFavoritedEvents);
+  
   
   // Date range inputs
   const startDateInput = document.querySelector('#start-date-input');
@@ -66,6 +70,26 @@ export default function Search() {
       })
       .catch((error) => console.error(error));
   };
+
+  function showFavoritedEvents() {
+    event.preventDefault();
+  event.stopPropagation();
+    resultsContainer.innerHTML = ""; // Clear current results
+
+    // Retrieve the latest favorites from local storage in case they were updated
+    favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.length === 0) {
+      resultsContainer.innerHTML = "<p>You have no favorited events.</p>";
+      return;
+    }
+
+    // For each favorited event, create and append the result item
+    favorites.forEach((event) => {
+      const resultItem = createResultItem(event);
+      resultsContainer.appendChild(resultItem);
+    });
+  }
 
   
   const createResultItem = (event) => {
@@ -132,23 +156,22 @@ export default function Search() {
       }
     });
     
-    // Handle click behavior to toggle the heart icon
-    heartIcon.addEventListener('click', () => {
-      if (heartIcon.classList.contains('bi-heart') || !heartIcon.classList.contains('clicked')) {
-        heartIcon.classList.remove('bi-heart');
-        heartIcon.classList.add('bi-heart-fill');
-        heartIcon.classList.add('clicked');
-        
+    heartIcon.addEventListener("click", () => {
+      if (!heartIcon.classList.contains("clicked")) {
+        heartIcon.classList.add("bi-heart-fill");
+        heartIcon.classList.add("clicked");
+
         // Add the event to favorites
         favorites.push(event);
         updateFavoritesInLocalStorage();
       } else {
-        heartIcon.classList.remove('bi-heart-fill');
-        heartIcon.classList.add('bi-heart');
-        heartIcon.classList.remove('clicked');
-        
+        heartIcon.classList.remove("bi-heart-fill");
+        heartIcon.classList.add("bi-heart");
+        heartIcon.classList.remove("clicked");
+
+        resultItem.remove();
         // Remove the event from favorites
-        favorites = favorites.filter(favEvent => favEvent.id !== event.id);
+        favorites = favorites.filter((favEvent) => favEvent.id !== event.id);
         updateFavoritesInLocalStorage();
       }
     });
