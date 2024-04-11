@@ -1,110 +1,107 @@
+/* Base styles for the forms */
 .search-form {
   display: flex;
-  flex-wrap: wrap;
-  flex-flow: column;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px;
 }
 
+/* Initially display both forms */
+.header .container__search,
+.main .container__search {
+  display: block;
+}
+
+/* Hide the form in the header on desktop and in main on mobile */
+@media (min-width: 768px) {
+  .header .container__search {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main .container__search {
+    display: none;
+  }
+}
+
+/* Additional styles as previously defined */
 .search-form__label {
-  margin-right: 0.5rem;
-  font-weight: bold;
-  font-size: var(--font-size-small);
+  margin-bottom: 10px;
+  font-weight: 600;
   color: #333;
-  margin-top: 1rem;
 }
 
 small {
-  color: grey;
+  color: #666;
 }
 
-.search-form__input {
-  padding: 0.4rem;
-  font-size: var(--font-size-small);
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  transition: 200ms ease-in-out;
+.search-form__input,
+.search-form__category-select {
+  width: 100%; /* Makes input take full width of the form */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
 }
 
-.search-form__input:focus {
-  outline: none;
-  border: 1px solid #000;
+.search-form__input:focus,
+.search-form__category-select:focus {
+  border-color: #0056b3; /* A blue focus color */
 }
 
 .date-range-container {
   display: flex;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .date-range-container input[type="date"] {
-  border: none;
-  margin: 0;
-  padding: 5px;
-}
-
-.date-range-container input[type="date"]:first-child {
-  border-right: 1px solid #ccc;
-}
-
-
-.search-form__category-select {
-  padding: 0.4rem;
-  font-size: var(--font-size-small);
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.search-form__category-select:focus {
-  outline: none;
-  border: 1px solid #000;
-}
-
-.search-form__button {
-  padding: 0.4rem 0.8rem;
-  font-size: var(--font-size-base);
-  background-color: var(--button-color);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  margin-top: 2rem;
-}
-
-.search-form__button:hover {
-  background-color: var(--button-color-hover);
+  flex-grow: 1;
+  padding: 10px;
 }
 
 .search-form__button-clear {
-  padding: 0.4rem 0.8rem;
-  font-size: var(--font-size-small);
-  background-color: var(--button-color);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  margin-top: 1rem;
+  background-color: #f44336; /* Red color for clear action */
 }
 
-.search-form__button-clear:hover {
-  background-color: var(--button-color-hover);
+.button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    padding: 10px;
+  }
+
+  .button {
+    padding: 10px 20px;
+  }
+}
+
+/* Specific classes for buttons to differentiate them */
+.search-form__button-clear,
+.container__search-favorites {
+  background-color: #007bff; /* Consistent blue for primary actions */
 }
 
 .container__search-favorites {
-  padding: 0.4rem 5rem;
-  font-size: var(--font-size-small);
-  background-color: var(--button-color);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  margin-top: 1rem;
+  padding: 10px 50px; /* Larger padding for emphasis on favorite events */
 }
