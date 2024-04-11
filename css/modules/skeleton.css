@@ -1,0 +1,91 @@
+
+.skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden; 
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.skeleton-image,
+.skeleton-text {
+  position: relative;
+  overflow: hidden; 
+  background-color: #ccc;
+  border-radius: 4px; 
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+}
+
+.skeleton-category {
+	  width: 20%;
+}
+
+.skeleton-text {
+  height: 20px; 
+  padding-left: 20px;
+  margin-left: 20px;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 30px;
+}
+
+.skeleton-blank {
+	  width: 100%;
+  height: 15px;
+	background-color: #fff;
+}
+
+.skeleton-date {
+  width: 60%;
+  height: 25px;
+}
+.skeleton-location {
+  width: 60%;
+}
+
+.skeleton-city {
+	width: 15%;
+}
+
+.skeleton-ticket {
+	width: 40%;
+}
+
+.skeleton-button {
+	width: 30%;
+	height: 35px;
+	border-radius: 10px;
+}
+
+.skeleton-image::before,
+.skeleton-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%; /* Start the animation from the left */
+  height: 100%;
+  width: 150%; /* Width should be enough to cover the entire element */
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #e0e0e0 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 100%;
+  }
+}

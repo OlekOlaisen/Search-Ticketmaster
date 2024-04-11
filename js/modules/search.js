@@ -42,9 +42,16 @@ export default function Search() {
       skeletonsHTML += `
       <div class="skeleton-wrapper">
         <div class="skeleton-image"></div>
+        <div class=" skeleton-blank"></div>
         <div class="skeleton-text skeleton-title"></div>
+        <div class=" skeleton-blank"></div>
+        <div class=" skeleton-blank"></div>
+        <div class="skeleton-text skeleton-category"></div>
         <div class="skeleton-text skeleton-date"></div>
+        <div class="skeleton-text skeleton-city"></div>
         <div class="skeleton-text skeleton-location"></div>
+        <div class="skeleton-text skeleton-ticket"></div>
+        <div class="skeleton-text skeleton-button"></div>
       </div>
     `;
     }
